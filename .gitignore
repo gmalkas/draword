@@ -8,10 +8,13 @@ capybara-*.html
 /log/*
 /tmp/*
 /db/*.sqlite3
+/db/*.sqlite3-journal
 /config/initializers/secret_token.rb
 /public/system/*
+/config/database.yml
 /coverage/
 /spec/tmp/*
 **.orig
 rerun.txt
 pickle-email-*.html
+*.swp

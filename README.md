@@ -1,6 +1,9 @@
 draWord
 =======
 
+draWord is a word-guessing game in which some players try to guess a word from
+a picture drawn by another player.
+
 Rules
 -----
 
@@ -26,4 +29,3 @@ License
 
 MIT License.
 See LICENSE for details.
-=======
