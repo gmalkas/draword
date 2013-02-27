@@ -1,16 +1,20 @@
 class Room
   
   class HasOngoingGameException < RuntimeError; end
+  class CannotJoinFullRoomException < RuntimeError; end
 
-  attr_reader :current_game, :name, :players
+  attr_reader :capacity, :current_game, :name, :players
 
-  def initialize(name)
+  DEFAULT_CAPACITY = 10
+
+  def initialize(name, capacity=DEFAULT_CAPACITY)
+    @capacity = capacity
     @name = name
     @players = []
   end
 
-  def players
-    @players
+  def full?
+    @players.size >= @capacity
   end
 
   def has_current_game?
@@ -23,8 +27,12 @@ class Room
   end
 
   def new_player(player)
+    raise CannotJoinFullRoomException if full?
     @players << player
   end
 
+  def players
+    @players
+  end
 
 end
