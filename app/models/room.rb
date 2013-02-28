@@ -17,6 +17,10 @@ class Room
     @turns_count = turns_count
   end
 
+  def empty?
+    @players.empty?
+  end
+
   def full?
     @players.size >= @capacity
   end
@@ -33,6 +37,10 @@ class Room
   def new_player(player)
     raise CannotJoinFullRoomException if full?
     @players << player
+  end
+
+  def remove_player(player)
+    @players.delete player
   end
 
   def players

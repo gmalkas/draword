@@ -40,6 +40,10 @@ describe Room do
     my_room.full?.should be_true
   end
 
+  it "can be empty" do
+    room.should be_empty 
+  end
+
   describe "#new_player" do
     context "when full" do
       let(:room) { Room.new "My room", 0 }
@@ -57,6 +61,30 @@ describe Room do
       end
     end
 
+  end
+
+  describe "#remove_player" do
+    context "when the player is not in the room" do
+      before do
+        room.new_player "Bob"
+      end
+
+      it "does nothing" do
+        room.remove_player "Gabriel"
+        room.players.size.should == 1
+      end
+    end
+
+    context "when the player is in the room" do
+      before do
+        room.new_player "Gabriel"
+      end
+
+      it "removes the player" do
+        room.remove_player "Gabriel"
+        room.players.size.should == 0
+      end
+    end
   end
 
   describe "#new_game" do
